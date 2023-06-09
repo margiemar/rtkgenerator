@@ -52,3 +52,11 @@ class ASOCatalog(models.Model):
 
     def __str__(self):
         return self.product_name
+    
+
+
+class UserOrder(models.Model):
+    service_code = models.TextField(max_length=50, verbose_name="Код операционной услуги")
+    service_name = models.TextField(max_length=255, verbose_name="Наименование операционной услуги")
+    geo_address = models.TextField(max_length=255, verbose_name="Адрес площадки")
+    
