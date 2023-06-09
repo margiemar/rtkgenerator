@@ -5,6 +5,7 @@ from decimal import Decimal
         
 PERCENTAGE_VALIDATOR = [MinValueValidator(0), MaxValueValidator(100)]
 
+
 class AbonReestr(models.Model):
     dev_name = models.TextField(max_length=200)
     ip_address = models.GenericIPAddressField(protocol='IPv4')
@@ -48,15 +49,39 @@ class ASOCatalog(models.Model):
     class Meta():
         verbose_name = "АСО"         
         verbose_name_plural = "АСО"
-        ordering = ('product_name',)
+        ordering = ['product_name',]
 
     def __str__(self):
         return self.product_name
     
 
+class OneTimeWork(models.Model):
+
+    INCONTRACT_CHOICES = (('IN', 'In contract'), 
+                          ('NEW', 'Not in contract'))
+
+    service_name = models.TextField(max_length=255, verbose_name="Наименование операционной услуги")
+    expert = models.TextField(max_length=255, verbose_name="Тип экспертизы")
+    rate = models.DecimalField(max_digits=12, decimal_places=2, verbose_name="Ставка без НДС, руб.")
+    hours = models.SmallIntegerField(verbose_name="Трудозатраты")
+    incontract = models.CharField(max_length=255, blank=True, choices=INCONTRACT_CHOICES, verbose_name="В рамках контракта")
+    
+    @property
+    def total_costs(self):
+        return self.rate*self.hours
+    
+    class Meta():
+        verbose_name = "Разовые работа"         
+        verbose_name_plural = "Разовые работы"
+        ordering = ('service_name',)
+
+    def __str__(self):
+        return self.service_name
 
 class UserOrder(models.Model):
     service_code = models.TextField(max_length=50, verbose_name="Код операционной услуги")
     service_name = models.TextField(max_length=255, verbose_name="Наименование операционной услуги")
     geo_address = models.TextField(max_length=255, verbose_name="Адрес площадки")
-    
+    aso = models.TextField(max_length=255, verbose_name="Тип оборудования") #Выпадающий список из ASOCatalog, множественный выбор.
+    one_time_operations = models.TextField(max_length=255, verbose_name="Разовые работы") #Выпадающий список из OneTimeWork, множественный выбор.
+

@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.base import TemplateView
+from .models import *
 
 
 from .forms import *
@@ -21,3 +22,16 @@ def pageNotFound(request, exception):
     #with open("rtk_app/images/404.png", "rb") as img:
     #    return FileResponse(img)
     HttpResponse("ydyvcyfvyvfy")
+
+
+class CreateOneTimeWorkView(CreateView):
+    model = OneTimeWork
+    form_class = OneTimeWorkForm
+    template_name = 'rtk_app/BD/bd_one_time_work.html'
+    success_url = reverse_lazy('home')
+
+class CreateUserOrderView(CreateView):
+    model = UserOrder
+    form_class = UserOrderForm
+    template_name = 'rtk_app/BD/bd_user_order.html'
+    success_url = reverse_lazy('home')    

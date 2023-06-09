@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Детали заказа</title>
+    <link type="text/css" href="{% static 'rtk_app/css/styles.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <h1>Форма заказа</h1></b></b>
+    <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Сформировать заказ" />
+    </form>
+    
+
+</body>
+</html>
