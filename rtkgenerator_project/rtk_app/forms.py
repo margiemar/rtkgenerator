@@ -23,7 +23,7 @@ class OneTimeWorkForm(forms.ModelForm):
 
 class UserOrderForm(forms.ModelForm):
 
-    aso = forms.ModelChoiceField(queryset = ASOCatalog.objects.all())
+    aso = forms.ModelChoiceField(queryset = ASOCatalog.objects.all(), label="ACO")
 
     class Meta:
         model = UserOrder
@@ -31,7 +31,9 @@ class UserOrderForm(forms.ModelForm):
         widgets = {
             'service_code': forms.Textarea(attrs={'cols': 160, 'rows': 1}),
             'service_name': forms.Textarea(attrs={'cols': 160, 'rows': 1}),
-            'geo_address': forms.Textarea(attrs={'cols': 160, 'rows': 1}),
+            'geo_address': forms.Textarea(attrs={'cols': 160, 'rows': 1}), 
+            'one_time_operations': forms.Textarea(attrs={'cols': 160, 'rows': 1}),
+
             #'aso': forms.ModelChoiceField(choices=ASOCatalog.objects.all()),
             #'one_time_operations': forms.ChoiceField(choices=OneTimeWork.objects.all())
         }

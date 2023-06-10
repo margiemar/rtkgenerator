@@ -71,7 +71,7 @@ class OneTimeWork(models.Model):
         return self.rate*self.hours
     
     class Meta():
-        verbose_name = "Разовые работа"         
+        verbose_name = "Разовая работа"         
         verbose_name_plural = "Разовые работы"
         ordering = ('service_name',)
 

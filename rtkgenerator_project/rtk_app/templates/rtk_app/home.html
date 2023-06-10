@@ -1,12 +1,6 @@
+{% extends "rtk_app/base.html" %}
 {% load static %}
-<html>
-<head>
-	<title>Главная страница</title>
-	<link type="text/css" href="{% static 'rtk_app/css/styles.css' %}" rel="stylesheet" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="shortcut icon" href="{% static 'rtkapp/images/main.ico' %}" type="image/x-icon"/>
-</head>
-<body>
-    <h1>Главная страница сайта
-</body>
-</html>
+{% block title %}Главная страница{% endblock title %}
+{% block content %}
+<h1>Главная страница сайта</h1>
+{% endblock content %}

@@ -2,14 +2,26 @@
 {% load static %}
 <html>
 <head>
-	<title>{{title}}</title>
+	<title>{% block title %}Пользовательский заказ{% endblock title %}</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="{% static "rtk_app/css/styles.css" %}" />
 </head>
 <body>
-
-    {% block content %}
-    {% endblock content %}
+    <div class="header">
+        <div><a href="/">Главная</a> | <a href="/contacts">Контакты</a></div>
+        <h1>{% block header %}{% endblock header %}</h1>
+    </div>
+    <div class="main">
+        <div>{% block content%}{% endblock content %}</div>
+    </div>
+    <div class="footer">
+        <br>
+        <div>MyBestCompany. 2023. All rights reserved.</div>
+    </div>
+    
 
 </body>
+
+    
+
 </html>
