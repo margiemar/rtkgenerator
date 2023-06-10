@@ -23,7 +23,9 @@ class OneTimeWorkForm(forms.ModelForm):
 
 class UserOrderForm(forms.ModelForm):
 
-    aso = forms.ModelChoiceField(queryset = ASOCatalog.objects.all(), label="ACO")
+    #aso = forms.ModelChoiceField(queryset = ASOCatalog.objects.all(), label="ACO")
+    aso = forms.ModelMultipleChoiceField(queryset = ASOCatalog.objects.all(),  widget=forms.CheckboxSelectMultiple, label="ACO")
+    #one_time_operations = forms.ModelMultipleChoiceField
 
     class Meta:
         model = UserOrder

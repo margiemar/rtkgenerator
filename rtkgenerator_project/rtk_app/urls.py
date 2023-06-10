@@ -6,6 +6,7 @@ from .views import *
 urlpatterns = [
     path('orderdetails/', OrderDetails.as_view(), name='orderdetails'),
     path("contacts/", TemplateView.as_view(template_name="rtk_app/contacts.html")),
+    path("ordergen", OrderGen.as_view, name='ordergen'),
 
 ]
 

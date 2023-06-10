@@ -19,7 +19,8 @@ class OrderDetails(TemplateView):
     template_name = "rtk_app/order_details.html"
 
 
-#class OrderGen(View):
+class OrderGen(View):
+    pass
 #	template_name = "rtk_app/order_details.html"
 #	form_class = PlayerForm
 #

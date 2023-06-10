@@ -7,8 +7,8 @@ PERCENTAGE_VALIDATOR = [MinValueValidator(0), MaxValueValidator(100)]
 
 
 class AbonReestr(models.Model):
-    dev_name = models.TextField(max_length=200)
-    ip_address = models.GenericIPAddressField(protocol='IPv4')
+    dev_name = models.TextField(max_length=200, null=True)
+    ip_address = models.GenericIPAddressField(protocol='IPv4', null=True)
     dev_model = models.TextField(max_length=200)
     vendor = models.TextField(max_length=200)
     role = models.TextField(max_length=200)
