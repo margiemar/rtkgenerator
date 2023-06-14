@@ -3,4 +3,9 @@
 {% block title %}Главная страница{% endblock title %}
 {% block content %}
 <h1>Главная страница сайта</h1>
+
+<form action="rtk/userorder/">
+    {% csrf_token %}
+    <input type="submit" value="Сформировать заказ" />
+  </form>
 {% endblock content %}

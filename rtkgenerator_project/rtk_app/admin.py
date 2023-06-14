@@ -11,9 +11,13 @@ class ASOCatalogAdmin(admin.ModelAdmin):
 class OneTimeWorkAdmin(admin.ModelAdmin):
     pass
 
+class UserOrderAdmin(admin.ModelAdmin):
+    pass
+
 admin.site.register(AbonReestr, AbonReestrAdmin)
 admin.site.register(ASOCatalog, ASOCatalogAdmin)
 admin.site.register(OneTimeWork, OneTimeWorkAdmin)
+admin.site.register(UserOrder, UserOrderAdmin)
 
 
 

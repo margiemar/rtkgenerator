@@ -85,3 +85,10 @@ class UserOrder(models.Model):
     aso = models.TextField(max_length=255, verbose_name="Тип оборудования") #Выпадающий список из ASOCatalog, множественный выбор.
     one_time_operations = models.TextField(max_length=255, verbose_name="Разовые работы") #Выпадающий список из OneTimeWork, множественный выбор.
 
+    class Meta():
+        verbose_name = "Детали заказа"         
+        verbose_name_plural = "Детали заказа"
+        ordering = ('geo_address',)
+
+    def __str__(self):
+        return self.geo_address
