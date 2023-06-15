@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.http import HttpResponse, HttpResponseNotFound, Http404, FileResponse
+from django.http import HttpResponse, HttpResponseNotFound, Http404, FileResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.base import TemplateView
+import pandas as pd
+import xlwt
 from .models import *
 
 
@@ -56,3 +58,14 @@ class CreateUserOrderView(CreateView):
     template_name = 'rtk_app/BD/bd_user_order.html'
     success_url = reverse_lazy('home')    
 
+
+def tabel_view(request):
+    return render(request, "new.html")
+
+def to_exel(request):
+    url = "http://127.0.0.1:8000/rtk/exel/"
+    #table = pd.read_html(url)[0]
+    table = pd.read_html(url)
+    print(table)
+    #table.to_excel("test_html_to_exel.xlsx")
+    return redirect('home')
